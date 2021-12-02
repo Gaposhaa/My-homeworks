@@ -1,2 +1,2 @@
 # My-homeworks
-In this place are my projects and homework completed during the training
+In this place are my projects and homeworks completed during the training

@@ -1,36 +1,35 @@
-class Rectangle:
-    def __init__(self, x, y, high, width):
+class Point:
+    def __init__(self, x, y,):
         self.x = x
         self.y = y
-        self.high = high
-        self.width = width
-        self.Point_first = x, y
-        self.Point_second = x + width, y
-        self.Point_third = x, y + high
-        self.Point_fourth = x + width, y + high
     def move(self, distance, direction):
         if direction == "left":
-            self.Point_first = self.x -distance, self.y
-            self.Point_second = self.x - distance, self.y
-            self.Point_third = self.x - distance, self.y
-            self.Point_fourth = (self.x + self.width) - distance, self.y
+            self.x -= distance
         elif direction == "right":
-            self.Point_first = self.x + distance, self.y
-            self.Point_second = self.x + distance, self.y
-            self.Point_third = self.x + distance, self.y
-            self.Point_fourth = (self.x + self.width) + distance, self.y
+            self.x += distance
         elif direction == "up":
-            self.Point_first = self.x, self.y + distance
-            self.Point_second = self.x, self.y + distance
-            self.Point_third = self.x, self.y + distance
-            self.Point_fourth = self.x, (self.y + self.high) + distance
+            self.y += distance
         elif direction == "down":
-            self.Point_first = self.x, self.y - distance
-            self.Point_second = self.x, self.y - distance
-            self.Point_third = self.x, self.y - distance
-            self.Point_fourth = self.x, (self.y + self.high) - distance
+            self.y -= distance
+        else:
+            raise ValueError
     def current_coord(self):
-        return (self.Point_first, self.Point_second, self.Point_third, self.Point_fourth)
+        return (self.x, self.y)
+class Rectangle(Point):
+    def rect(self, high, width):
+        self.high = high
+        self.width = width
+        self.point_first = self.x, self.y
+        self.point_second = self.x + width, self.y
+        self.point_third = self.x + width, self.y + high
+        self.point_fourth = self.x, self.y + high
+    def m(self, point_first, point_second, point_third, point_fourth):
+        self.point_first = point_first.move
+        self.point_second = point_second.move
+        self.point_third = point_third.move
+        self.point_fourth = point_fourth.move
+    def current_coord(self):
+        return (self.point_first, self.point_second, self.point_third, self.point_fourth)
 
 
 

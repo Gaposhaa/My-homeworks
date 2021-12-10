@@ -23,7 +23,7 @@ class Rectangle(Point):
         self.point_second = self.x + width, self.y
         self.point_third = self.x + width, self.y + high
         self.point_fourth = self.x, self.y + high
-    def m(self, point_first, point_second, point_third, point_fourth):
+    def new_move(self, point_first, point_second, point_third, point_fourth):
         self.point_first = point_first.move
         self.point_second = point_second.move
         self.point_third = point_third.move

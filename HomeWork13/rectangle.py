@@ -19,15 +19,25 @@ class Rectangle:
     def rect(self, high, width, x, y):
         self.high = high
         self.width = width
-        self.point_left_down = Point(x, y)
-        self.point_left_up = Point(x, y + high)
-        self.point_right_up = Point(x + width, y + high)
-        self.point_right_down = Point(x + width, y)
-        self.coord_list = [self.point_left_down, self.point_left_up, self.point_right_up, self.point_right_down]
+        point_left_down = Point(x, y)
+        point_left_up = Point(x, y + high)
+        point_right_up = Point(x + width, y + high)
+        point_right_down = Point(x + width, y)
+        self.coord_list = [point_left_down, point_left_up, point_right_up, point_right_down]
     def move(self, distance, direction):
         for i in self.coord_list:
             i.move(distance, direction)
     def current_coord(self):
-        return ((self.point_left_down), (self.point_left_up), (self.point_right_up), (self.point_left_down))
+        new_list = []
+        for i in self.coord_list:
+            new_list.appened(i)
+        new_list = tuple(new_list)
+        return new_list
+    
+        
+            
+            
+        
+ 
     
 

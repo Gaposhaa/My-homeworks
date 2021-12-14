@@ -15,21 +15,19 @@ class Point:
             raise ValueError
     def current_coord(self):
         return (self.x, self.y)
-class Rectangle(Point):
-    def rect(self, high, width):
+class Rectangle:
+    def rect(self, high, width, x, y):
         self.high = high
         self.width = width
-        self.point_first = self.x, self.y
-        self.point_second = self.x + width, self.y
-        self.point_third = self.x + width, self.y + high
-        self.point_fourth = self.x, self.y + high
-    def new_move(self, point_first, point_second, point_third, point_fourth):
-        self.point_first = point_first.move
-        self.point_second = point_second.move
-        self.point_third = point_third.move
-        self.point_fourth = point_fourth.move
+        self.point_left_down = Point(x, y)
+        self.point_left_up = Point(x, y + high)
+        self.point_right_up = Point(x + width, y + high)
+        self.point_right_down = Point(x + width, y)
+        self.coord_list = [self.point_left_down, self.point_left_up, self.point_right_up, self.point_right_down]
+    def move(self, distance, direction):
+        for i in self.coord_list:
+            i.move(distance, direction)
     def current_coord(self):
-        return (self.point_first, self.point_second, self.point_third, self.point_fourth)
-
-
+        return ((self.point_left_down), (self.point_left_up), (self.point_right_up), (self.point_left_down))
+    
 
